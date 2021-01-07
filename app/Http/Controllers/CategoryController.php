@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -15,13 +16,15 @@ class CategoryController extends Controller
     public function index()
     {
         //$category = Category::with('posts')->get();
-        $category = Category::all();
+        $category =DB::table('categories')->get();
 
-       
+    
         return response()->json([
-            'category' => "$category"
+            'category' => $category
 
         ],200);
+
+        
 
     }
 
